@@ -72,6 +72,12 @@
         document.getElementById("stcount").textContent = stack + " (" + realstack + ")";
         document.getElementById("itcount").textContent = item;
     }
+
+    function calc_if_enter() {
+        if (event.key === 'Enter') {
+            calculate();
+        }
+    }
 </script>
 
 <body>
@@ -79,9 +85,9 @@
     <div style="width: fit-content; margin: auto; padding-top: 10vh;">
         <div style="width: fit-content; margin: auto;">
             <label for="count" class="text"># of items: </label>
-            <input id="input" type="text" pattern="\d*" maxlength="6"
+            <input id="input" type="text" pattern="\d*" maxlength="6" name="input" class="input"
                 onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
-                id="count" name="count" class="input">
+                onkeydown="calc_if_enter()">
             <input id="submit" type="submit" value="Go" style="width: 10vh;" onclick="calculate()"
                 onmousedown="document.getElementById(this.id).style.background = '#333';"
                 onmouseup="document.getElementById(this.id).style.background = 'darkslategray';"
