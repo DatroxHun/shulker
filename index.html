@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shulker Calculator</title>
+    <title>Shulker Converter</title>
 
     <link rel="icon" href="shulker_icon.png">
     <link href="https://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet">
@@ -55,6 +55,15 @@
         background-color: darkslategray;
         color: aqua;
     }
+
+    .value {
+        color: burlywood;
+        -moz-user-select: text;
+        -khtml-user-select: text;
+        -webkit-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+    }
 </style>
 
 <script>
@@ -68,9 +77,17 @@
         realstack = Math.floor(count / 64 * 100) / 100;
         realshulker = Math.floor(count / 1728 * 100) / 100;
 
-        document.getElementById("shcount").textContent = shulker + " (" + realshulker + ")";
-        document.getElementById("stcount").textContent = stack + " (" + realstack + ")";
+        var count_array = document.getElementsByName("count");
+        for (var i = 0; i < count_array.length; i++) {
+            count_array[i].innerHTML = count;
+        }
+
+        document.getElementById("shcount").textContent = shulker;
+        document.getElementById("stcount").textContent = stack;
         document.getElementById("itcount").textContent = item;
+
+        document.getElementById("allstack").textContent = realstack;
+        document.getElementById("allshulker").textContent = realshulker;
     }
 
     function calc_if_enter() {
@@ -81,8 +98,8 @@
 </script>
 
 <body>
-    <h1>Shulker Calculator</h1>
-    <div style="width: fit-content; margin: auto; padding-top: 10vh;">
+    <h1>Shulker Converter</h1>
+    <div style="width: fit-content; margin: auto; padding-top: 5vh;">
         <div style="width: fit-content; margin: auto;">
             <label for="count" class="text"># of items: </label>
             <input id="input" type="text" pattern="\d*" maxlength="6" name="input" class="input"
@@ -94,14 +111,51 @@
                 onmouseleave="document.getElementById(this.id).style.background='darkslategray';">
         </div>
 
-        <div style="width: fit-content; margin: auto; margin-top: 5vh;">
+        <hr style="margin-top: 2.5vh; width: 52.5vw;">
+
+        <div style="width: fit-content; margin: auto; margin-top: 2.5vh; display: flex;">
+            <span name="count" class="text" style="margin-right: 1.5vw; color: aqua;">#</span>
+            <span class="text" style="margin-right: 1.5vw;">=</span>
+
             <img src="shulker_icon.png" alt="shulker_icon" style="height: 5vh;">
-            <span id="shcount" class="text" style="margin-left: 1vw; margin-right: 5vw;">-</span>
+            <span class="text" style="margin-right: 0vw; margin-left: 1vw;">×</span>
+            <span id="shcount" class="text value" style="margin-right: 1vw;">#</span>
+
+            <span class="text" style="margin-right: 1vw;">+</span>
+
             <img src="diamond_stack.png" alt="stack_icon" style="height: 5vh;">
-            <span id="stcount" class="text" style="margin-left: 1vw; margin-right: 5vw;">-</span>
+            <span class="text" style="margin-right: 0vw; margin-left: 1vw;">×</span>
+            <span id="stcount" class="text value" style="margin-right: 1vw;">#</span>
+
+            <span class="text" style="margin-right: 1vw;">+</span>
+
             <img src="cobblestone_icon.png" alt="cobblestone_icon" style="height: 5vh;">
-            <span id="itcount" class="text" style="margin-left: 1vw; margin-right: 5vw;">-</span>
+            <span class="text" style="margin-right: 0vw; margin-left: 1vw;">×</span>
+            <span id="itcount" class="text value">#</span>
         </div>
+
+        <hr style="opacity: 0.5; width: 43vw;">
+
+        <div style="width: fit-content; margin: auto; margin-top: 2vh;">
+            <span name="count" class="text" style="margin-right: 1.5vw; color: aqua;">#</span>
+            <span class="text" style="margin-right: 1.5vw;">=</span>
+
+            <span id="allshulker" class="text value">#</span>
+            <span class="text" style="margin-left: 1vh; margin-right: 1vw;">×1728</span>
+            <img src="shulker_icon.png" alt="shulker_icon" style="height: 5vh;">
+        </div>
+
+        <hr style="opacity: 0.25; width: 33.3vw;">
+
+        <div style="width: fit-content; margin: auto; margin-top: 2vh;">
+            <span name="count" class="text" style="margin-right: 1.5vw; color: aqua;">#</span>
+            <span class="text" style="margin-right: 1.5vw;">=</span>
+
+            <span id="allstack" class="text value">#</span>
+            <span class="text" style="margin-left: 1vh; margin-right: 1vw;">×64</span>
+            <img src="diamond_stack.png" alt="stack_icon" style="height: 5vh;">
+        </div>
+
     </div>
 </body>
 
