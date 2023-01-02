@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shulker Converter</title>
+
+    <link rel="icon" href="shulker_icon.png">
+    <link href="https://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet">
+</head>
+
+<style>
+    body {
+        background-image: url("shulker_icon.png");
+        background-size: 50px 50px;
+        background-color: rgba(0, 0, 32, 1.0);
+        background-blend-mode: multiply;
+
+        font-family: 'Common Pixel', sans-serif;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    h1 {
+        color: crimson;
+        font-size: 10vh;
+        text-align: center;
+    }
+
+    .text {
+        color: white;
+        font-size: 5vh;
+        text-align: center;
+        vertical-align: bottom;
+    }
+
+    input {
+        width: 20vh;
+        font-family: 'Common Pixel', sans-serif;
+        font-size: 5vh;
+        text-align: center;
+
+        background-color: darkslategray;
+        color: aqua;
+    }
+</style>
+
+<script>
+    function calculate() {
+        count = document.getElementById("input").value;
+
+        item = count % 64;
+        stack = ((count - item) / 64) % 27;
+        shulker = (count - item - 64 * stack) / 1728;
+
+        realstack = Math.floor(count / 64 * 100) / 100;
+        realshulker = Math.floor(count / 1728 * 100) / 100;
+
+        document.getElementById("shcount").textContent = shulker + " (" + realshulker + ")";
+        document.getElementById("stcount").textContent = stack + " (" + realstack + ")";
+        document.getElementById("itcount").textContent = item;
+    }
+</script>
+
+<body>
+    <h1>Shulker Calculator</h1>
+    <div style="width: fit-content; margin: auto; padding-top: 50px;">
+        <div style="width: fit-content; margin: auto;">
+            <label for="count" class="text">Number of items: </label>
+            <input id="input" type="text" pattern="\d*" maxlength="6"
+                onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
+                id="count" name="count" class="input">
+            <input id="submit" type="submit" value="Go" style="width: 10vh;" onclick="calculate()"
+                onmousedown="document.getElementById(this.id).style.background = '#333';"
+                onmouseup="document.getElementById(this.id).style.background = 'darkslategray';"
+                onmouseleave="document.getElementById(this.id).style.background='darkslategray';">
+        </div>
+
+        <div style="width: fit-content; margin: auto; margin-top: 75px;">
+            <img src="shulker_icon.png" alt="shulker_icon" style="height: 5vh;">
+            <span id="shcount" class="text" style="margin-left: 1vw; margin-right: 5vw;">-</span>
+            <img src="diamond_stack.png" alt="stack_icon" style="height: 5vh;">
+            <span id="stcount" class="text" style="margin-left: 1vw; margin-right: 5vw;">-</span>
+            <img src="cobblestone_icon.png" alt="cobblestone_icon" style="height: 5vh;">
+            <span id="itcount" class="text" style="margin-left: 1vw; margin-right: 5vw;">-</span>
+        </div>
+    </div>
+</body>
+
+</html>
