@@ -5,20 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shulker Converter</title>
+    <title>Shulker Calculator</title>
 
     <link rel="icon" href="shulker_icon.png">
     <link href="https://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet">
 </head>
 
 <style>
+    @font-face {
+        font-family: joystix;
+        src: url(joystix.ttf);
+    }
+
     body {
         background-image: url("shulker_icon.png");
         background-size: 50px 50px;
         background-color: rgba(0, 0, 32, 1.0);
         background-blend-mode: multiply;
 
-        font-family: 'Common Pixel', sans-serif;
+        font-family: 'joystix';
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         -khtml-user-select: none;
@@ -31,19 +36,20 @@
         color: crimson;
         font-size: 10vh;
         text-align: center;
+        font-family: 'Common Pixel', sans-serif;
     }
 
     .text {
         color: white;
-        font-size: 5vh;
+        font-size: 4vh;
         text-align: center;
-        vertical-align: bottom;
+        vertical-align: top;
     }
 
     input {
+        font-family: 'joystix';
         width: 20vh;
-        font-family: 'Common Pixel', sans-serif;
-        font-size: 5vh;
+        font-size: 4vh;
         text-align: center;
 
         background-color: darkslategray;
@@ -70,7 +76,7 @@
 
 <body>
     <h1>Shulker Calculator</h1>
-    <div style="width: fit-content; margin: auto; padding-top: 50px;">
+    <div style="width: fit-content; margin: auto; padding-top: 10vh;">
         <div style="width: fit-content; margin: auto;">
             <label for="count" class="text">Number of items: </label>
             <input id="input" type="text" pattern="\d*" maxlength="6"
@@ -82,7 +88,7 @@
                 onmouseleave="document.getElementById(this.id).style.background='darkslategray';">
         </div>
 
-        <div style="width: fit-content; margin: auto; margin-top: 75px;">
+        <div style="width: fit-content; margin: auto; margin-top: 5vh;">
             <img src="shulker_icon.png" alt="shulker_icon" style="height: 5vh;">
             <span id="shcount" class="text" style="margin-left: 1vw; margin-right: 5vw;">-</span>
             <img src="diamond_stack.png" alt="stack_icon" style="height: 5vh;">
